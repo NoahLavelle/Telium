@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Telium {
-    class Room {
+    internal class Room {
         public readonly RoomData RoomData;
 
         public Room(string jsonPath)
         {
             using StreamReader r = new StreamReader(jsonPath);
-            string json = r.ReadToEnd();
+            var json = r.ReadToEnd();
             RoomData = JsonConvert.DeserializeObject<RoomData>(json);
         }
     }

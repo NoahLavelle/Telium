@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace Telium.ConsoleFeatures
 {
     public static class DrawMulticoloredLine
     {
-        public static void Draw(ColoredStringSection[] coloredStringSections)
+        public static void Draw(IEnumerable<ColoredStringSection> coloredStringSections)
         {
             foreach (var coloredStringSection in coloredStringSections)
             {

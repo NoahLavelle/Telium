@@ -4,7 +4,7 @@ namespace Telium.ConsoleFeatures
 {
     public class Input
     {
-        public string Answer;
+        public readonly string Answer;
 
         public Input(string message)
         {

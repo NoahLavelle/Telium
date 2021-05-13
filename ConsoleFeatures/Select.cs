@@ -8,7 +8,7 @@ namespace Telium.ConsoleFeatures
     public class Select
     {
         private readonly RoomData _roomData;
-        private JObject[] _jObjects;
+        private readonly JObject[] _jObjects;
         
         public Select(RoomData roomData)
         {
@@ -17,7 +17,7 @@ namespace Telium.ConsoleFeatures
             RunSelect();
         }
 
-        void SendHeaderMessage()
+        private void SendHeaderMessage()
         {
                         
             DrawMulticoloredLine.Draw(new[]
@@ -27,7 +27,7 @@ namespace Telium.ConsoleFeatures
             });
         }
 
-        void RunSelect()
+        private void RunSelect()
         {
             var selectedObject = _jObjects[0];
 

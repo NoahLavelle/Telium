@@ -1,18 +1,18 @@
 {
-    "name": "Module One",
+    "name": "Module Sixteen",
     "objects": [
         {
-            "name": "Enter module two",
+            "name": "Enter module eleven",
             "type": "Door",
             "interactData": {
-                "room": "roomTwo"
+                "room": "roomEleven"
             }
         },
         {
-            "name": "Enter module three",
+            "name": "Enter module twelve",
             "type": "Door",
             "interactData": {
-                "room": "roomThree"
+                "room": "roomTwelve"
             }
         }
     ]

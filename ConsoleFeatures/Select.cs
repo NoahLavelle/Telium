@@ -23,13 +23,14 @@ namespace Telium.ConsoleFeatures
             DrawMulticoloredLine.Draw(new[]
             {
                 new DrawMulticoloredLine.ColoredStringSection("? ", ColorScheme.PromptColor),
-                new DrawMulticoloredLine.ColoredStringSection(_roomData.Name + ":\n", ColorScheme.DefaultColor)
+                new DrawMulticoloredLine.ColoredStringSection($"You have entered {_roomData.Name}. What would you like to do?\n", ColorScheme.DefaultColor)
             });
         }
 
         private void RunSelect()
         {
             var selectedObject = _jObjects[0];
+            Console.CursorVisible = false;
 
             SendHeaderMessage();
 
@@ -51,6 +52,8 @@ namespace Telium.ConsoleFeatures
                         break;
                     case ConsoleKey.Enter:
                         var type = Type.GetType($"Telium.Objects.{selectedObject["type"]}");
+                        Console.WriteLine();
+                        Console.CursorVisible = true;
                         Activator.CreateInstance(type ?? throw new InvalidOperationException(), selectedObject["interactData"]);
                         return;
                 }

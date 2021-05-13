@@ -1,4 +1,5 @@
 ﻿using System;
+using Telium.ConsoleFeatures;
 
 namespace Telium
 {
@@ -6,7 +7,9 @@ namespace Telium
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Prompt.Input("Name");
+            Prompt.Select(new Room("Rooms/roomOne.json").roomData);
+    
         }
     }
 }

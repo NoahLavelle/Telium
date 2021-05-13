@@ -1,0 +1,9 @@
+{
+    "name": "Room One",
+    "doors": [
+        {
+            "name": "Door One!",
+            "linkedScene": "Rooms/roomTwo.json"
+        }
+    ]
+}

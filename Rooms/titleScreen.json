@@ -1,0 +1,21 @@
+﻿{
+  "overrideEntryText": true,
+  "name": "Welcome to the title screen",
+  "description": "If you don't know how to play then check the instructions",
+  "objects": [
+    {
+      "name": "Play",
+      "type": "StartButton",
+      "interactData": {
+        "action": "play"
+      }
+    },
+    {
+      "name": "Instructions",
+      "type": "StartButton",
+      "interactData": {
+        "action": "instructions"
+      }
+    }
+  ]
+}

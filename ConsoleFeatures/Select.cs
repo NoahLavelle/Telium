@@ -26,13 +26,12 @@ namespace Telium.ConsoleFeatures
 
         private void SendHeaderMessage()
         {
-            Console.WriteLine($"=====================================================================================================\nPower: {Player.Power}");
+            Console.WriteLine($"=====================================================================================================\n{(_roomData.OverrideEntryText ? "" : $"Power: {Player.Power}")}");
             DrawMulticoloredLine.Draw(new[]
             {
                 new DrawMulticoloredLine.ColoredStringSection("? ", ColorScheme.PromptColor),
-                new DrawMulticoloredLine.ColoredStringSection("You have entered ", ColorScheme.DefaultColor),
-                new DrawMulticoloredLine.ColoredStringSection($"{_roomData.Name}", ColorScheme.NameColor),
-                new DrawMulticoloredLine.ColoredStringSection($". {_roomData.Description}. What would you like to do?\n", ColorScheme.DefaultColor),
+                new DrawMulticoloredLine.ColoredStringSection($"{(_roomData.OverrideEntryText ? "" :"You have entered")}{(_roomData.OverrideEntryText ? "" : " ")}{_roomData.Name}. {_roomData.Description}. " +
+                                                              $"What would you like to do?\n", ColorScheme.DefaultColor),
             });
         }
 

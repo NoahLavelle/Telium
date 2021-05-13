@@ -10,13 +10,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="Rooms\RoomEight.json">
+      <Content Include="Rooms\roomEight.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="Rooms\roomEleven.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="Rooms\RoomFifteen.json">
+      <Content Include="Rooms\roomFifteen.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="Rooms\roomFive.json">
@@ -25,10 +25,10 @@
       <Content Include="Rooms\roomFour.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="Rooms\RoomFourteen.json">
+      <Content Include="Rooms\roomFourteen.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="Rooms\RoomNine.json">
+      <Content Include="Rooms\roomNine.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="Rooms\roomSeven.json">
@@ -43,7 +43,7 @@
       <Content Include="Rooms\roomSixteen.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="Rooms\RoomTen.json">
+      <Content Include="Rooms\roomTen.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="Rooms\roomThirteen.json">
@@ -61,6 +61,10 @@
       </Content>
       <None Remove="Rooms\roomTwo.json" />
       <Content Include="Rooms\roomTwo.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Rooms\titleScreen.json" />
+      <Content Include="Rooms\titleScreen.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

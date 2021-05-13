@@ -9,4 +9,15 @@
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Rooms\roomOne.json" />
+      <Content Include="Rooms\roomOne.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Rooms\roomTwo.json" />
+      <Content Include="Rooms\roomTwo.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

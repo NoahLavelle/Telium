@@ -1,14 +1,12 @@
 using System;
+using Newtonsoft.Json.Linq;
+using Telium.ConsoleFeatures;
 
-namespace Telium.ConsoleFeatures {
-    public class Door : InteractableObject {
-            public Door() {
-            OnInteraction += SwitchRoom;
-            SelectText = "Door";
-        }
-
-        void SwitchRoom(object sender, EventArgs e) {
-            Console.WriteLine(e.selectedObject["linkedScene"]);
+namespace Telium.Objects {
+    public class Door {
+        public Door(JObject interactData)
+        {
+            Prompt.Select(new Room($"Rooms/{interactData["room"]}.json").RoomData);
         }
     }
 }

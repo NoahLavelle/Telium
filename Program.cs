@@ -3,12 +3,12 @@ using Telium.ConsoleFeatures;
 
 namespace Telium
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Prompt.Input("Name");
-            Prompt.Select(new Room("Rooms/roomOne.json").roomData);
+            Prompt.Select(new Room("Rooms/roomOne.json").RoomData);
     
         }
     }

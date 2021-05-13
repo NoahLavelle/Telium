@@ -1,75 +1,62 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using Telium.Objects;
 
 namespace Telium.ConsoleFeatures
 {
     public class Select
     {
-        private static Select _instance;
-
-        private readonly Dictionary<ConsoleKey, Func<int, int>> _actions = new()
-        {
-            {ConsoleKey.UpArrow, selectedItem => selectedItem - 1},
-            {ConsoleKey.DownArrow, selectedItem => selectedItem + 1},
-            {
-                ConsoleKey.Enter, selectedItem =>
-                {
-                    _instance.ItemSelected();
-                    return selectedItem;
-                }
-            }
-        };
-
-        private readonly int _selectedItem;
-        private readonly Newtonsoft.Json.Linq.JObject _finalItem;
         private readonly RoomData _roomData;
-        private bool _itemSelected;
-
+        private JObject[] _jObjects;
+        
         public Select(RoomData roomData)
         {
-            _instance = this;
-            int optionsCount = roomData.doors.Length;
             _roomData = roomData;
+            _jObjects = roomData.Objects;
+            RunSelect();
+        }
 
-            roomData.name += ":\n";
-            Console.CursorVisible = false;
+        void SendHeaderMessage()
+        {
+                        
             DrawMulticoloredLine.Draw(new[]
             {
                 new DrawMulticoloredLine.ColoredStringSection("? ", ColorScheme.PromptColor),
-                new DrawMulticoloredLine.ColoredStringSection(roomData.name, ColorScheme.DefaultColor)
+                new DrawMulticoloredLine.ColoredStringSection(_roomData.Name + ":\n", ColorScheme.DefaultColor)
             });
-
-            while (!_itemSelected)
-            {
-                for (var i = 0; i < optionsCount; i++)
-                {
-                    if (_selectedItem == i)
-                    {
-                        Console.ForegroundColor = ColorScheme.SelectionColor;
-                        Console.Write("> ");
-                    }
-                    else
-                    {
-                        Console.Write("  ");
-                    }
-
-                    Console.WriteLine(roomData.doors[i]["name"]);
-                    Console.ResetColor();
-                }
-
-                var keyPressed = Console.ReadKey(true).Key;
-                if (_actions.ContainsKey(keyPressed))
-                    _finalItem = roomData.doors[_selectedItem];
-
-                if (!_itemSelected) Console.CursorTop -= optionsCount;
-            }
         }
 
-        private void ItemSelected()
+        void RunSelect()
         {
-            _itemSelected = true;
-            Console.CursorVisible = true;
-            new Door().OnInteraction.Invoke(this, new EventArgs(_finalItem));
+            var selectedObject = _jObjects[0];
+
+            SendHeaderMessage();
+
+            while (true)
+            {
+                foreach (var jObject in _jObjects)
+                {
+                    Console.ForegroundColor = selectedObject == jObject ? ColorScheme.SelectionColor : ColorScheme.DefaultColor;
+                    Console.Write(selectedObject == jObject ? "> " : "  ");
+                    Console.WriteLine(jObject["name"]);
+                    Console.ForegroundColor = ColorScheme.DefaultColor;
+                }
+
+                var consoleKey = Console.ReadKey(true);
+                switch (consoleKey.Key)
+                {
+                    case ConsoleKey.UpArrow or ConsoleKey.DownArrow:
+                        selectedObject = _jObjects[Math.Clamp(Array.IndexOf(_jObjects, selectedObject) + (consoleKey.Key == ConsoleKey.UpArrow ? -1 : 1), 0, _jObjects.Length - 1)];
+                        break;
+                    case ConsoleKey.Enter:
+                        var type = Type.GetType($"Telium.Objects.{selectedObject["type"]}");
+                        Activator.CreateInstance(type ?? throw new InvalidOperationException(), selectedObject["interactData"]);
+                        return;
+                }
+                
+                Console.CursorTop -= _jObjects.Length;
+            }
         }
     }
 }

@@ -1,9 +1,12 @@
 {
     "name": "Room One",
-    "doors": [
+    "objects": [
         {
-            "name": "Door One!",
-            "linkedScene": "Rooms/roomTwo.json"
+            "name": "Door One",
+            "type": "Door",
+            "interactData": {
+                "room": "roomTwo"
+            }
         }
     ]
 }

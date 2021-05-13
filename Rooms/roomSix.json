@@ -1,5 +1,6 @@
 {
-    "name": "Module Six",
+    "name": "module six",
+    "description": "This is where the power for the whole ship is produced",
     "objects": [
         {
             "name": "Enter module three",

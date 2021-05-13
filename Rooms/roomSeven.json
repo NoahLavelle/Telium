@@ -1,5 +1,6 @@
 {
-    "name": "Module Seven",
+    "name": "module seven",
+    "description": "This is the ships medical bay",
     "objects": [
         {
             "name": "Enter module six",

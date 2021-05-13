@@ -1,5 +1,6 @@
 {
-    "name": "Module Four",
+    "name": "module four",
+    "description": "This is the viewing deck that looks off into space",
     "objects": [
         {
             "name": "Enter module five",

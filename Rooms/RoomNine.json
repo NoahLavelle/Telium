@@ -1,5 +1,6 @@
 {
-    "name": "Module Nine",
+    "name": "module nine",
+    "description": "This module contains one of the ships thrusters",
     "objects": [
         {
             "name": "Enter module four",

@@ -1,5 +1,6 @@
 {
-    "name": "Module Thirteen",
+    "name": "module thirteen",
+    "description": "This modules contains the ships shield systems",
     "objects": [
         {
             "name": "Enter module twelve",

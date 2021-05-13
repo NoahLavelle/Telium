@@ -1,5 +1,6 @@
 {
-    "name": "Module Eight",
+    "name": "module eight",
+    "description": "the communication module where astronauts contact Earth",
     "objects": [
         {
             "name": "Enter module four",

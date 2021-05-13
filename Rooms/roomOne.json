@@ -1,5 +1,6 @@
 {
-    "name": "Module One",
+    "name": "module one",
+    "description": "This is the ships cockpit",
     "objects": [
         {
             "name": "Enter module two",

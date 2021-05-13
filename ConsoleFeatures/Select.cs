@@ -14,16 +14,25 @@ namespace Telium.ConsoleFeatures
         {
             _roomData = roomData;
             _jObjects = roomData.Objects;
+            Player.Power--;
+            if (Player.Power == 0)
+            {
+                Player.GameOver();
+                return;
+            }
+            
             RunSelect();
         }
 
         private void SendHeaderMessage()
         {
-                        
+            Console.WriteLine($"=====================================================================================================\nPower: {Player.Power}");
             DrawMulticoloredLine.Draw(new[]
             {
                 new DrawMulticoloredLine.ColoredStringSection("? ", ColorScheme.PromptColor),
-                new DrawMulticoloredLine.ColoredStringSection($"You have entered {_roomData.Name}. What would you like to do?\n", ColorScheme.DefaultColor)
+                new DrawMulticoloredLine.ColoredStringSection("You have entered ", ColorScheme.DefaultColor),
+                new DrawMulticoloredLine.ColoredStringSection($"{_roomData.Name}", ColorScheme.NameColor),
+                new DrawMulticoloredLine.ColoredStringSection($". {_roomData.Description}. What would you like to do?\n", ColorScheme.DefaultColor),
             });
         }
 

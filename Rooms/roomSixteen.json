@@ -1,5 +1,6 @@
 {
-    "name": "Module Sixteen",
+    "name": "module sixteen",
+    "description": "This module is the admin room",
     "objects": [
         {
             "name": "Enter module eleven",

@@ -17,6 +17,7 @@ namespace Telium {
 
     public class RoomData {
         public string Name;
+        public string Description;
         public JObject[] Objects;
     }
 }

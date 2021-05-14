@@ -12,7 +12,7 @@ namespace Telium {
             // A StreamReader stores the contents of the rooms JSON file in a string
             using StreamReader r = new StreamReader(jsonPath);
             var json = r.ReadToEnd();
-            // We then use this string to parse the JSON using the Newtonsoft.Json package.
+            // I then use this string to parse the JSON using the Newtonsoft.Json package.
             // The variables in the JSON are mapped onto the RoomData class
             RoomData = JsonConvert.DeserializeObject<RoomData>(json);
         }

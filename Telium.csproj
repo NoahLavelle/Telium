@@ -67,6 +67,10 @@
       <Content Include="Rooms\titleScreen.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="npcData.json" />
+      <Content Include="npcData.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

@@ -12,7 +12,6 @@ namespace Telium
             // Loads the title screen room. This contains the buttons to start the game and read the instructions.
             // I store the title screen in a room so we can use the existing LoadRoom features to display the options
             Prompt.LoadRoom(new Room("Rooms/titleScreen.json").RoomData);
-    
         }
 
         private static void RunTitleScreen()

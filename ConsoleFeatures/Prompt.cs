@@ -1,5 +1,7 @@
 namespace Telium.ConsoleFeatures
 {
+    
+    // Prompt acts as an easy way to run these functions. I could run them directly but this is more organised
     public static class Prompt
     {
         public static string Input(string message)
@@ -8,9 +10,9 @@ namespace Telium.ConsoleFeatures
             return input.Answer;
         }
 
-        public static void Select(RoomData roomData)
+        public static void LoadRoom(RoomData roomData)
         {
-            var select = new Select(roomData);
+            var select = new LoadRoom(roomData);
         }
     }
 }

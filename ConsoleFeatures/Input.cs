@@ -10,6 +10,7 @@ namespace Telium.ConsoleFeatures
         {
             message += ": ";
 
+            // Draws the question and waits for an answer. It exists so I can style it
             DrawMulticoloredLine.Draw(new DrawMulticoloredLine.ColoredStringSection[]
                 {new("? ", ColorScheme.PromptColor), new(message, ColorScheme.DefaultColor)});
             var answer = Console.ReadLine();

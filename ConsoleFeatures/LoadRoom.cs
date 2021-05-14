@@ -5,27 +5,24 @@ using Telium.Objects;
 
 namespace Telium.ConsoleFeatures
 {
-    public class Select
+    public class LoadRoom
     {
+        // RoomData is the data loaded from the rooms JSON file
         private readonly RoomData _roomData;
+        // An array of the objects in the room. These are specified in the objects array in a rooms JSON file
         private readonly JObject[] _jObjects;
         
-        public Select(RoomData roomData)
+        public LoadRoom(RoomData roomData)
         {
             _roomData = roomData;
             _jObjects = roomData.Objects;
-            Player.Power--;
-            if (Player.Power == 0)
-            {
-                Player.GameOver();
-                return;
-            }
-            
-            RunSelect();
+
+            RunDialogue();
         }
 
         private void SendHeaderMessage()
         {
+            // Override entry text exists to reduce the text needed for the json of doors. May be removed soon
             Console.WriteLine($"=====================================================================================================\n{(_roomData.OverrideEntryText ? "" : $"Power: {Player.Power}")}");
             DrawMulticoloredLine.Draw(new[]
             {
@@ -35,8 +32,9 @@ namespace Telium.ConsoleFeatures
             });
         }
 
-        private void RunSelect()
+        private void RunDialogue()
         {
+            // Stores the JObject that is currently selected
             var selectedObject = _jObjects[0];
             Console.CursorVisible = false;
 
@@ -46,12 +44,14 @@ namespace Telium.ConsoleFeatures
             {
                 foreach (var jObject in _jObjects)
                 {
+                    // If the item is currently selected it is drawn in blue with > in front of it. If it is not it is normal
                     Console.ForegroundColor = selectedObject == jObject ? ColorScheme.SelectionColor : ColorScheme.DefaultColor;
                     Console.Write(selectedObject == jObject ? "> " : "  ");
                     Console.WriteLine(jObject["name"]);
                     Console.ForegroundColor = ColorScheme.DefaultColor;
                 }
 
+                // Input from the console is collected here to allow the selection to be changed
                 var consoleKey = Console.ReadKey(true);
                 switch (consoleKey.Key)
                 {
@@ -59,13 +59,26 @@ namespace Telium.ConsoleFeatures
                         selectedObject = _jObjects[Math.Clamp(Array.IndexOf(_jObjects, selectedObject) + (consoleKey.Key == ConsoleKey.UpArrow ? -1 : 1), 0, _jObjects.Length - 1)];
                         break;
                     case ConsoleKey.Enter:
+                        // When an item is selected the type specified in its JObject is found so the appropriate class can be instanced using the Activator class
                         var type = Type.GetType($"Telium.Objects.{selectedObject["type"]}");
                         Console.WriteLine();
                         Console.CursorVisible = true;
-                        Activator.CreateInstance(type ?? throw new InvalidOperationException(), selectedObject["interactData"]);
+                        
+                        // Every time the player moves his power is depleted until there is none left
+                        Player.Power--;
+                        if (Player.Power == 0)
+                        {
+                            // Runs the Game over sequence that can be found in the player class when power is out. I may move this function soon
+                            Player.GameOver();
+                            return;
+                        }
+                        
+                        // Instances the class for the object that was found earlier with the JObjects interaction data specified in its JSON. An exception is thrown if no type is found
+                        Activator.CreateInstance(type ?? throw new NullReferenceException(), selectedObject["interactData"]);
                         return;
                 }
                 
+                // The cursor is moved to the start of the options so they are written over next time
                 Console.CursorTop -= _jObjects.Length;
             }
         }

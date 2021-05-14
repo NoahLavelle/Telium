@@ -6,7 +6,9 @@ namespace Telium.Objects {
     public class Door {
         public Door(JObject interactData)
         {
-            Prompt.Select(new Room($"Rooms/{interactData["room"]}.json").RoomData);
+            // The door is simple. When interacted with it gets the linked room name specified in the interaction data and creates a file path with it
+            // This file path is used to load the new room
+            Prompt.LoadRoom(new Room($"Rooms/{interactData["room"]}.json").RoomData);
         }
     }
 }

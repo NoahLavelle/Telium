@@ -11,9 +11,17 @@ namespace Telium.Objects
         {
             // If the buttons JSON specifies play, the first room will be loaded, initiating the game loop
             // Otherwise the instructions will be loaded
-            if (interactionData["action"].ToString() == "play")
+            var action = interactionData["action"].ToString();
+            switch (action)
             {
-                Prompt.LoadRoom(new Room("Rooms/roomOne.json").RoomData);
+                case "play":
+                    Prompt.LoadRoom(new Room("Rooms/roomOne.json").RoomData);
+                    break;
+                case "instructions":
+                    break;
+                case "quit":
+                    System.Environment.Exit(0);
+                    break;
             }
         }
     }

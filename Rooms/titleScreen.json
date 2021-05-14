@@ -16,6 +16,13 @@
       "interactData": {
         "action": "instructions"
       }
+    },
+    {
+      "name": "Quit",
+      "type": "StartButton",
+      "interactData": {
+        "action": "quit"
+      }
     }
   ]
 }

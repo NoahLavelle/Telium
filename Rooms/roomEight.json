@@ -1,5 +1,6 @@
 {
     "name": "module eight",
+    "roomNumber": 8,
     "description": "the communication module where astronauts contact Earth",
     "objects": [
         {

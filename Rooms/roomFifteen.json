@@ -1,5 +1,6 @@
 {
     "name": "module fifteen",
+    "roomNumber": 15,
     "description": "This module is the ships security room. Its cameras can see all over the ship",
     "objects": [
         {

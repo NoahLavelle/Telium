@@ -1,3 +1,5 @@
+using System;
+
 namespace Telium.ConsoleFeatures
 {
     
@@ -10,9 +12,9 @@ namespace Telium.ConsoleFeatures
             return input.Answer;
         }
 
-        public static void LoadRoom(RoomData roomData)
+        public static void LoadRoom(RoomData roomData, Action postLoadInjection = null)
         {
-            var select = new LoadRoom(roomData);
+            var select = new LoadRoom(roomData, postLoadInjection);
         }
     }
 }

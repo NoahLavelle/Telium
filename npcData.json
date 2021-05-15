@@ -1,6 +1,13 @@
 ﻿{
-  "queenCount": 1,
-  "ventilationShaftCount": 2,
-  "informationPanelCount": 2,
-  "workerCount": 3
+  "npcSpawnStack": [
+    "Queen",
+    "VentilationShaft",
+    "VentilationShaft",
+    "VentilationShaft",
+    "InformationPanel",
+    "InformationPanel",
+    "Worker",
+    "Worker",
+    "Worker"
+  ]
 }

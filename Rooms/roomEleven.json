@@ -1,5 +1,6 @@
 {
     "name": "module eleven",
+    "roomNumber": 11,
     "description": "This module is the engine room. It powers both of the ships thrusters",
     "objects": [
         {

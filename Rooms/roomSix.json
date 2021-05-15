@@ -1,5 +1,6 @@
 {
     "name": "module six",
+    "roomNumber": 6,
     "description": "This is where the power for the whole ship is produced",
     "objects": [
         {

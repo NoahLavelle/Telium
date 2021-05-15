@@ -11,11 +11,14 @@ namespace Telium.ConsoleFeatures
         private readonly RoomData _roomData;
         // An array of the objects in the room. These are specified in the objects array in a rooms JSON file
         private readonly JObject[] _jObjects;
+        private readonly Action _postLoadInjection;
         
-        public LoadRoom(RoomData roomData)
+        public LoadRoom(RoomData roomData, Action postLoadInjection)
         {
             _roomData = roomData;
+            _postLoadInjection = postLoadInjection;
             _jObjects = roomData.Objects;
+            GameData.RoomNumber = roomData.RoomNumber;
 
             RunDialogue();
         }
@@ -24,6 +27,7 @@ namespace Telium.ConsoleFeatures
         {
             // Override entry text exists to reduce the text needed for the json of doors. May be removed soon
             Console.WriteLine($"=====================================================================================================\n{(_roomData.OverrideEntryText ? "" : $"Power: {Player.Power}")}");
+            _postLoadInjection?.Invoke();
             DrawMulticoloredLine.Draw(new[]
             {
                 new DrawMulticoloredLine.ColoredStringSection("? ", ColorScheme.PromptColor),

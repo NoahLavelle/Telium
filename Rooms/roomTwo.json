@@ -1,5 +1,6 @@
 {
     "name": "module two",
+    "roomNumber": 2,
     "description": "This is the viewing deck that looks off into space",
     "objects": [
         {

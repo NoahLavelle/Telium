@@ -1,5 +1,6 @@
 {
     "name": "module five",
+    "roomNumber": 5,
     "description": "This is where the machinery for oxygen recycling is stored",
     "objects": [
         {

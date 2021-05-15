@@ -1,5 +1,6 @@
 {
     "name": "module fourteen",
+    "roomNumber": 14,
     "description": "This module is the ships storage",
     "objects": [
         {

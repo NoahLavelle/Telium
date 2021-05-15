@@ -1,5 +1,6 @@
 ﻿{
   "overrideEntryText": true,
+  "roomNumber": 0,
   "name": "Welcome to the title screen",
   "description": "If you don't know how to play then check the instructions",
   "objects": [

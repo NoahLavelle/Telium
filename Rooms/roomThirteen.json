@@ -1,5 +1,6 @@
 {
     "name": "module thirteen",
+    "roomNumber": 13,
     "description": "This module contains the ships weaponry system",
     "objects": [
         {

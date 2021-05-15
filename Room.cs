@@ -21,6 +21,7 @@ namespace Telium {
     public class RoomData {
         public string Name;
         public string Description;
+        public int RoomNumber;
         public bool OverrideEntryText = false;
         public JObject[] Objects;
     }

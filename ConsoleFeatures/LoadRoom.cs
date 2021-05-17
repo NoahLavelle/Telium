@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Telium.Objects;
@@ -23,17 +24,56 @@ namespace Telium.ConsoleFeatures
             RunDialogue();
         }
 
-        private void SendHeaderMessage()
+        private bool SendHeaderMessage()
         {
             // Override entry text exists to reduce the text needed for the json of doors. May be removed soon
             Console.WriteLine($"=====================================================================================================\n{(_roomData.OverrideEntryText ? "" : $"Power: {Player.Power}")}");
-            _postLoadInjection?.Invoke();
+            
+            if (CheckRoomEvents()) {
+                return false;
+            }
+            
             DrawMulticoloredLine.Draw(new[]
             {
                 new DrawMulticoloredLine.ColoredStringSection("? ", ColorScheme.PromptColor),
                 new DrawMulticoloredLine.ColoredStringSection($"{(_roomData.OverrideEntryText ? "" :"You have entered")}{(_roomData.OverrideEntryText ? "" : " ")}{_roomData.Name}. {_roomData.Description}. " +
                                                               $"What would you like to do?\n", ColorScheme.DefaultColor),
             });
+            return true;
+        }
+
+        private bool CheckRoomEvents() {
+                // This code is run just after the room is switched. We run npc checking here
+                // This finds all npcs where their room is the same as the room you just moved into
+                var enumerable = GameNpcData.Data.Where(npc => npc.RoomNumber == GameData.RoomNumber);
+                // I loop through each npc and tell the player about it
+                foreach (var npc in enumerable)
+                {
+                    if (npc.Type == NpcHandling.NpcType.VentilationShaft) {
+                        VentilationShaftEntered();
+                        return true;
+                    }
+
+                    DrawMulticoloredLine.Draw(new []
+                    {
+                        new DrawMulticoloredLine.ColoredStringSection($"There is a {npc.Type} in here\n", ConsoleColor.DarkRed)
+                    });
+                    return true;
+                }
+
+                return false;
+        }
+
+        void VentilationShaftEntered() {
+            DrawMulticoloredLine.Draw(new [] {
+                new DrawMulticoloredLine.ColoredStringSection("There is a ", ConsoleColor.White),
+                new DrawMulticoloredLine.ColoredStringSection("bank of fuel cells ", ConsoleColor.Cyan),
+                new DrawMulticoloredLine.ColoredStringSection($"in here. You load one into your flamethrower. Fuel was {Player.FlamethrowerFuel} but is now reading {Player.FlamethrowerFuel + 50}\n" +
+                    "The doors suddenly lock shut... What is happening to the space station? Our only escape is to climb into the ventilation shaft, " +
+                    "but we don't know where we are going.\nWe follow the passeges and find ourselves sliding down\n", ConsoleColor.White),
+            });
+
+            Player.FlamethrowerFuel += 50;
         }
 
         private void RunDialogue()
@@ -42,7 +82,9 @@ namespace Telium.ConsoleFeatures
             var selectedObject = _jObjects[0];
             Console.CursorVisible = false;
 
-            SendHeaderMessage();
+            if (!SendHeaderMessage()) {
+                return;
+            }
 
             while (true)
             {

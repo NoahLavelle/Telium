@@ -6,6 +6,7 @@ namespace Telium
     public class Player
     {
         public static int Power = 15;
+        public static int FlamethrowerFuel = 100;
 
         public static void GameOver()
         {

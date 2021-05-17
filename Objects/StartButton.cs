@@ -9,13 +9,13 @@ namespace Telium.Objects
         // This is the type used for the buttons in the title sequence
         public StartButton(JObject interactionData)
         {
-            // If the buttons JSON specifies play, the first room and NPCs will be loaded, initiating the game loop
-            // Otherwise the instructions will be loaded
+            // We get the desired action from the interact data, and deal with it in the switch statement
             var action = interactionData["action"].ToString();
             switch (action)
             {
                 case "play":
-                    NpcHandling.Load();;
+                    // If play is chosen the npcs are loaded and the new room is loaded
+                    NpcHandling.Load();
                     Prompt.LoadRoom(new Room("Rooms/roomOne.json").RoomData);
                     break;
                 case "instructions":

@@ -1,27 +1,27 @@
 {
-    "name": "module eight",
-    "roomNumber": 8,
-    "description": "the communication module where astronauts contact Earth",
+    "name": "module ten",
+    "roomNumber": 10,
+    "description": "This module is the canteen",
     "objects": [
         {
-            "name": "Enter module four",
+            "name": "Enter module five",
             "type": "Door",
             "interactData": {
-                "room": "roomFour"
+                "room": "room5"
             }
         },
         {
             "name": "Enter module nine",
             "type": "Door",
             "interactData": {
-                "room": "roomNine"
+                "room": "room9"
             }
         },
         {
-            "name": "Enter module fourteen",
+            "name": "Enter module fifteen",
             "type": "Door",
             "interactData": {
-                "room": "roomFourteen"
+                "room": "room15"
             }
         }
     ]

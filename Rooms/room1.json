@@ -7,14 +7,21 @@
             "name": "Enter module two",
             "type": "Door",
             "interactData": {
-                "room": "roomTwo"
+                "room": "room2"
             }
         },
         {
             "name": "Enter module three",
             "type": "Door",
             "interactData": {
-                "room": "roomThree"
+                "room": "room3"
+            }
+        },
+        {
+            "name": "Scanner",
+            "type": "StartButton",
+            "interactData": {
+                "action": "scanner"
             }
         }
     ]

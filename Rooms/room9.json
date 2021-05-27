@@ -7,28 +7,28 @@
             "name": "Enter module four",
             "type": "Door",
             "interactData": {
-                "room": "roomEight"
+                "room": "room8"
             }
         },
         {
             "name": "Enter module eight",
             "type": "Door",
             "interactData": {
-                "room": "roomEight"
+                "room": "room8"
             }
         },
         {
             "name": "Enter module ten",
             "type": "Door",
             "interactData": {
-                "room": "roomTen"
+                "room": "room10"
             }
         },
         {
             "name": "Enter module fifteen",
             "type": "Door",
             "interactData": {
-                "room": "roomFifteen"
+                "room": "room15"
             }
         }
     ]

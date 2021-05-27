@@ -1,20 +1,20 @@
 {
-    "name": "module three",
-    "roomNumber": 3,
-    "description": "This module is where incoming ships can dock",
+    "name": "module two",
+    "roomNumber": 2,
+    "description": "This is the viewing deck that looks off into space",
     "objects": [
         {
             "name": "Enter module one",
             "type": "Door",
             "interactData": {
-                "room": "roomOne"
+                "room": "room1"
             }
         },
         {
-            "name": "Enter module six",
+            "name": "Enter module five",
             "type": "Door",
             "interactData": {
-                "room": "roomSix"
+                "room": "room5"
             }
         }
     ]

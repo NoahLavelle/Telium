@@ -7,14 +7,14 @@
             "name": "Enter module twelve",
             "type": "Door",
             "interactData": {
-                "room": "roomTwelve"
+                "room": "room12"
             }
         },
         {
             "name": "Enter module thirteen",
             "type": "Door",
             "interactData": {
-                "room": "roomThirteen"
+                "room": "room13"
             }
         }
     ]

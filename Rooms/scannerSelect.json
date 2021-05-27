@@ -1,0 +1,16 @@
+{
+    "overrideEntryText": true,
+    "roomNumber": 0,
+    "name": "Scanner ready",
+    "description": "Here are your available actions",
+    "objects": [
+      {
+        "name": "Lock",
+        "type": "StartButton",
+        "interactData": {
+          "action": "lock",
+          "lastModule": 0
+        }
+      }
+    ]
+  }

@@ -8,6 +8,7 @@ namespace Telium.ConsoleFeatures
 {
     public class LoadRoom
     {
+        Random rand = new Random();
         // RoomData is the data loaded from the rooms JSON file
         private readonly RoomData _roomData;
         // An array of the objects in the room. These are specified in the objects array in a rooms JSON file
@@ -21,7 +22,7 @@ namespace Telium.ConsoleFeatures
             _jObjects = roomData.Objects;
             GameData.RoomNumber = roomData.RoomNumber;
 
-            RunDialogue();
+            RunDialogue(_jObjects);
         }
 
         private bool SendHeaderMessage()
@@ -58,28 +59,29 @@ namespace Telium.ConsoleFeatures
                     {
                         new DrawMulticoloredLine.ColoredStringSection($"There is a {npc.Type} in here\n", ConsoleColor.DarkRed)
                     });
-                    return true;
                 }
 
                 return false;
         }
 
         void VentilationShaftEntered() {
+            int newFuel = Player.FlamethrowerFuel + ((int) (rand.Next(20, 50) / 10)) * 10;
             DrawMulticoloredLine.Draw(new [] {
                 new DrawMulticoloredLine.ColoredStringSection("There is a ", ConsoleColor.White),
                 new DrawMulticoloredLine.ColoredStringSection("bank of fuel cells ", ConsoleColor.Cyan),
-                new DrawMulticoloredLine.ColoredStringSection($"in here. You load one into your flamethrower. Fuel was {Player.FlamethrowerFuel} but is now reading {Player.FlamethrowerFuel + 50}\n" +
+                new DrawMulticoloredLine.ColoredStringSection($"in here. You load one into your flamethrower. Fuel was {Player.FlamethrowerFuel} but is now reading {newFuel}\n" +
                     "The doors suddenly lock shut... What is happening to the space station? Our only escape is to climb into the ventilation shaft, " +
                     "but we don't know where we are going.\nWe follow the passeges and find ourselves sliding down\n", ConsoleColor.White),
             });
 
-            Player.FlamethrowerFuel += 50;
+            Player.FlamethrowerFuel = newFuel;
+            Prompt.LoadRoom(new Room($"Rooms/room{rand.Next(2, 17)}.json").RoomData);
         }
 
-        private void RunDialogue()
+        private void RunDialogue(JObject[] jObjects)
         {
             // Stores the JObject that is currently selected
-            var selectedObject = _jObjects[0];
+            var selectedObject = jObjects[0];
             Console.CursorVisible = false;
 
             if (!SendHeaderMessage()) {

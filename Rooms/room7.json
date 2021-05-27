@@ -1,27 +1,27 @@
 {
-    "name": "module eleven",
-    "roomNumber": 11,
-    "description": "This module is the engine room. It powers both of the ships thrusters",
+    "name": "module seven",
+    "roomNumber": 7,
+    "description": "This is the ships medical bay",
     "objects": [
         {
             "name": "Enter module six",
             "type": "Door",
             "interactData": {
-                "room": "roomSix"
+                "room": "room6"
             }
         },
         {
             "name": "Enter module twelve",
             "type": "Door",
             "interactData": {
-                "room": "roomTwelve"
+                "room": "room12"
             }
         },
         {
-            "name": "Enter module sixteen",
+            "name": "Enter module thirteen",
             "type": "Door",
             "interactData": {
-                "room": "roomSixteen"
+                "room": "room13"
             }
         }
     ]
